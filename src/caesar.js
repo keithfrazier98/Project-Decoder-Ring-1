@@ -6,60 +6,60 @@
 const caesarModule = (function () {
   // you can add any code you want within this function scope
 
-  function wrapAlphabet (charCode){
-    if(charCode > 122) {
-    charCode -= 26
+  function wrapAlphabet(charCode) {
+    if (charCode > 122) {
+      charCode -= 26;
     } else {
-      charCode += 26
+      charCode += 26;
     }
-    return charCode
+    return charCode;
   }
 
-
   function caesar(input, shift, encode = true) {
-    if(shift === 0 || shift > 25 || shift < -26) return false
-    
-    input = input.toLowerCase()
-    const inputArray = input.split("")
-    const alphabetChars = [...Array(27).keys()]
-    const unicodeChars = alphabetChars.map((char) => char + 97)
-    unicodeChars.pop()
-    let output = []
+    if (shift === 0 || shift > 25 || shift < -26) return false;
 
+    input = input.toLowerCase();
+    const inputArray = input.split("");
+    const alphabetChars = [...Array(27).keys()];
+    const unicodeChars = alphabetChars.map((char) => char + 97);
+    unicodeChars.pop();
+    let output = [];
 
-    if(encode) {
-      inputArray.forEach((char) =>{
-        let charCode = char.charCodeAt()
-        if(unicodeChars.includes(charCode)){
-          charCode += shift
+    if (encode) {
+      inputArray.forEach((char) => {
+        let charCode = char.charCodeAt();
+        if (unicodeChars.includes(charCode)) {
+          charCode += shift;
           //if charCode is greater than 122 or less than 97, loop around range of numbers
-          if (charCode > 122 || charCode  < 97) charCode = wrapAlphabet(charCode)
-          output.push(String.fromCharCode(charCode))
+          if (charCode > 122 || charCode < 97)
+            charCode = wrapAlphabet(charCode);
+          output.push(String.fromCharCode(charCode));
         } else {
-          output.push(char)
+          output.push(char);
         }
-      })
+      });
     } else {
       inputArray.forEach((char) => {
-        let charCode = char.charCodeAt()
-        if(unicodeChars.includes(charCode)){
-          charCode -= shift
-          if (charCode > 122 || charCode  < 97) charCode = wrapAlphabet(charCode)
-          output.push(String.fromCharCode(charCode))
+        let charCode = char.charCodeAt();
+        if (unicodeChars.includes(charCode)) {
+          charCode -= shift;
+          if (charCode > 122 || charCode < 97)
+            charCode = wrapAlphabet(charCode);
+          output.push(String.fromCharCode(charCode));
         } else {
-          output.push(char)
+          output.push(char);
         }
-    })}
-    output = output.join("")
-    return output
+      });
+    }
+    output = output.join("");
+    return output;
   }
 
   return {
     caesar,
   };
-} )();
+})();
 
 //let output = caesarModule.caesar("xyz", 3, true)
-
 
 module.exports = caesarModule.caesar;
