@@ -16,7 +16,7 @@ const caesarModule = (function () {
   }
 
   function caesar(input, shift, encode = true) {
-    if (shift === 0 || shift > 25 || shift < -26) return false;
+    if (!shift || shift === true || shift > 25 || shift < -26) return false;
 
     input = input.toLowerCase();
     const inputArray = input.split("");
@@ -43,6 +43,7 @@ const caesarModule = (function () {
         let charCode = char.charCodeAt();
         if (unicodeChars.includes(charCode)) {
           charCode -= shift;
+          //if charCode is greater than 122 or less than 97, loop around range of numbers
           if (charCode > 122 || charCode < 97)
             charCode = wrapAlphabet(charCode);
           output.push(String.fromCharCode(charCode));
