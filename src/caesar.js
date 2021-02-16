@@ -44,6 +44,7 @@ const caesarModule = (function () {
         let charCode = char.charCodeAt()
         if(unicodeChars.includes(charCode)){
           charCode -= shift
+          if (charCode > 122 || charCode  < 97) charCode = wrapAlphabet(charCode)
           output.push(String.fromCharCode(charCode))
         } else {
           output.push(char)
