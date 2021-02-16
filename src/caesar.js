@@ -25,37 +25,22 @@ const caesarModule = (function () {
     unicodeChars.pop();
     let output = [];
 
-    if (encode) {
-      inputArray.forEach((char) => {
-        let charCode = char.charCodeAt();
-        if (unicodeChars.includes(charCode)) {
-          charCode += shift;
-          //if charCode is greater than 122 or less than 97, loop around range of numbers
-          if (charCode > 122 || charCode < 97)
-            charCode = wrapAlphabet(charCode);
-          output.push(String.fromCharCode(charCode));
-        } else {
-          output.push(char);
-        }
-      });
-    } else {
-      inputArray.forEach((char) => {
-        let charCode = char.charCodeAt();
-        if (unicodeChars.includes(charCode)) {
-          charCode -= shift;
-          //if charCode is greater than 122 or less than 97, loop around range of numbers
-          if (charCode > 122 || charCode < 97)
-            charCode = wrapAlphabet(charCode);
-          output.push(String.fromCharCode(charCode));
-        } else {
-          output.push(char);
-        }
-      });
-    }
+    inputArray.forEach((char) => {
+      let charCode = char.charCodeAt();
+      if (unicodeChars.includes(charCode)) {
+       encode ? charCode += shift : charCode-= shift
+        //if charCode is greater than 122 or less than 97, loop around range of numbers
+        if (charCode > 122 || charCode < 97) 
+          charCode = wrapAlphabet(charCode);
+        output.push(String.fromCharCode(charCode));
+      } else {
+        output.push(char);
+      }
+    });
     output = output.join("");
-    return output;
+    return output
   }
-
+  
   return {
     caesar,
   };
