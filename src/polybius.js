@@ -65,7 +65,7 @@ const polybiusModule = (function () {
   };
 })();
 
-console.log(polybiusModule.polybius("3251131343", false));
-console.log(polybiusModule.polybius("hello"))
+//console.log(polybiusModule.polybius("3251131343", false));
+//console.log(polybiusModule.polybius("hello"))
 
 module.exports = polybiusModule.polybius;

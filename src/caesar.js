@@ -21,13 +21,13 @@ const caesarModule = (function () {
     input = input.toLowerCase();
     const inputArray = input.split("");
     const alphabetChars = [...Array(27).keys()];
-    const unicodeChars = alphabetChars.map((char) => char + 97);
-    unicodeChars.pop();
+    const UTFChars = alphabetChars.map((num) => num + 97);
+    UTFChars.pop();
     let output = [];
 
     inputArray.forEach((char) => {
       let charCode = char.charCodeAt();
-      if (unicodeChars.includes(charCode)) {
+      if (UTFChars.includes(charCode)) {
        encode ? charCode += shift : charCode-= shift
         //if charCode is greater than 122 or less than 97, loop around range of numbers
         if (charCode > 122 || charCode < 97) 
