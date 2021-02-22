@@ -23,3 +23,10 @@ A test can show as pending when the it() funciton was closed early:
 
 https://www.git-tower.com/learn/git/faq/delete-local-branch/
 
+### replaceAll()
+Replace every occurance of the search argument with the replace argument.
+
+
+
+https://dmitripavlutin.com/replace-all-string-occurrences-javascript/#3-replaceall-method
+

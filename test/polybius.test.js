@@ -24,8 +24,8 @@ describe("polybius", () =>{
     })
 
     it("should maintain spaces when decoding", () =>{
-        const decode = polybius("44513444 31113451", false)
-        expect(decode).to.equal("test case")
+        const decode = polybius("!!11 23 23 11.!", false)
+        expect(decode).to.equal("!! a m m a.!")
     })
 
     it("should ignore capital letters", () => {
