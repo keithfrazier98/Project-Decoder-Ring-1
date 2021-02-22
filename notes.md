@@ -23,10 +23,13 @@ A test can show as pending when the it() funciton was closed early:
 
 https://www.git-tower.com/learn/git/faq/delete-local-branch/
 
-### replaceAll()
-Replace every occurance of the search argument with the replace argument.
+### array.splice()
+changes element of array at index
 
+takes three arguments, index to start changing array, how many indexes to delete, what to add into the array
 
+returns array of removed items
 
-https://dmitripavlutin.com/replace-all-string-occurrences-javascript/#3-replaceall-method
+`output.splice(index /2, 0, specialChars[index])`
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
