@@ -14,14 +14,14 @@ describe("polybius", () =>{
         const actual = polybius("ij")
         expect(actual).to.equal("4242")
     })
-    it("should decode I and J appropriately"), () =>{
+    it("should decode I and J appropriately", () =>{
         const actual = polybius("42", false)
         expect(actual).to.equal("(i/j)")
-    }
-    it("should maintain spaces when encoding"),() =>{
+    })
+    it("should maintain spaces when encoding",() =>{
         const encode = polybius("test case")
         expect(encode).to.equal("44513444 31113451")
-    }
+    })
 
     it("should maintain spaces when decoding", () =>{
         const decode = polybius("44513444 31113451", false)
@@ -33,8 +33,8 @@ describe("polybius", () =>{
         expect(actual).to.equal("31115342441113")
     })
 
-    it("should ignore special characters"), () => {
+    it("should ignore special characters", () => {
         const actual = polybius("hello!!")
         expect(actual).to.equal("3251131343!!")
-    }
+    })
 })
