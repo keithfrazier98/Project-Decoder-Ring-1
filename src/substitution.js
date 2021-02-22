@@ -104,9 +104,14 @@ const substitutionModule = (function () {
   };
 })();
 
+//let test = substitutionModule.substitution(
+//  "pvrgs",
+//  "zyxwvutsrqponmlkjihgfedcba",
+//);
 let test = substitutionModule.substitution(
   "pvrgs",
-  "zyxwvutsrqponmlkjihgfedcba",
+  "~!@#$%^&*()_-+=[{]}|:<>?,.",
 );
+
 console.log(test);
 module.exports = substitutionModule.substitution;
