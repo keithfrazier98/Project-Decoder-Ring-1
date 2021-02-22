@@ -3,12 +3,13 @@
 // Only add code (e.g., helper methods, variables, etc.) within the scope
 // of the anonymous function on line 6
 
-const { util } = require("chai");
+//const { util } = require("chai");
 
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input, encode = true) {
+    //if (input.length / 2 === Boolean) return false
     let square = {
       11: "a",
       21: "b",
@@ -44,7 +45,9 @@ const polybiusModule = (function () {
       inputArray.forEach((char) => {
         for (let number in square) {
           let letter = square[number];
-          if (letter === char) output.push(number);
+          if (letter === char) {
+            output.push(number);
+          } 
         }
       });
     } else {
