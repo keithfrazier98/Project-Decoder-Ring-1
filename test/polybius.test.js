@@ -37,4 +37,14 @@ describe("polybius", () =>{
         const actual = polybius("hello!!")
         expect(actual).to.equal("3251131343!!")
     })
+
+    it("should return the same message when an decoded message is passed to be decoded",() =>{
+        const actual = polybius("This is a technically decoded message. It should return the exact way it was passed.", false)
+        expect(actual).to.equal("This is a technically decoded message. It should return the exact way it was passed.")
+    })
+
+    it("should return the same message when an encoded message is passed to be encoded", () =>{
+        const actual = polybius("44324234 4234 11 4451313233423111131345 41513143415141 23513434112251. 4244 343243541341 245144542433 443251 5135113144 251145 4244 251134 531134345141.")
+        expect(actual).to.equal("44324234 4234 11 4451313233423111131345 41513143415141 23513434112251. 4244 343243541341 245144542433 443251 5135113144 251145 4244 251134 531134345141.")
+    })
 })
