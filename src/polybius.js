@@ -16,11 +16,15 @@ const polybiusModule = (function () {
     let inputArray = input.split("");
     let inputArrayNumbers =[]
     let specialChars = {}
+    let indexPush = 0
       inputArray.forEach((char, index) =>{
         if(numbers.includes(char)){
           inputArrayNumbers.push(char)
+          //indexPush is decremented by .5 since each number in a numberpair counts for half of an encoded number
+          //indexPush keeps spaces and special characters in proper location
+          indexPush -= .5
         } else {
-          specialChars[index] = char
+          specialChars[(index + indexPush)] = char
         }
       })
     
@@ -101,7 +105,7 @@ const polybiusModule = (function () {
       }
       //add in special characters
       for (let index in specialChars){
-        output.splice(index /2, 0, specialChars[index])
+        output.splice(index, 0, specialChars[index])
       }
     }
 
@@ -115,9 +119,8 @@ const polybiusModule = (function () {
   };
 })();
 
-console.log(polybiusModule.polybius("!!11 23 23 11.!", false));
+console.log(polybiusModule.polybius("!! 11 23 23 11.!", false));
 console.log(polybiusModule.polybius("!!1123 2311.! 11121314141315", false));
-
 console.log(polybiusModule.polybius("test case"))
 console.log(polybiusModule.polybius("2345 23513434112251", false))
 
