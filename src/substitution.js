@@ -117,14 +117,4 @@ const substitutionModule = (function () {
   };
 })();
 
-//let test = substitutionModule.substitution(
-//  "pvrgs",
-//  "zyxwvutsrqponmlkjihgfedcba",
-//);
-let test = substitutionModule.substitution(
-  "Pvrgs, Vwdziw, Uizarvi.",
-  "zyxwvutsrqponmlkjihgfedcba", false
-);
-
-console.log(test);
 module.exports = substitutionModule.substitution;

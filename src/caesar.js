@@ -46,6 +46,4 @@ const caesarModule = (function () {
   };
 })();
 
-//let output = caesarModule.caesar("xyz", 3, true)
-
 module.exports = caesarModule.caesar;
