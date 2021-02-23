@@ -6,11 +6,24 @@
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
-  function substitution(input, alphabet, encode = false) {
+  function substitution(input, alphabet, encode = true) {
     if (!alphabet || alphabet.length != 26) return false;
 
     //convert inputed alphabet to UTF numbers
     const inputAlphabetArray = alphabet.split("");
+
+    try {
+      inputAlphabetArray.forEach((char, i) => {
+        inputAlphabetArray.forEach((char2, index) => {
+          if (char === char2 && index != i)
+            throw "Two or more characters are the same. Please revise alphabet.";
+        });
+      });
+    } catch(error) {
+      console.log(error)
+      return false
+    }
+
     if (inputAlphabetArray.includes(" ")) return false;
     const inputUTFCharArray = [];
     inputAlphabetArray.forEach((char) => {
@@ -31,7 +44,7 @@ const substitutionModule = (function () {
       for (let i = 0; i < str.length; i++) {
         if (stdUpCaseUTFNumer.includes(str[i].charCodeAt())) {
           upCaseIndexes.push(i);
-        }
+        } 
       }
     };
 
@@ -80,7 +93,7 @@ const substitutionModule = (function () {
         } else {
           //if character at current index is not in input alphabet
           //push character to output string
-          UTFoutput.push(inputArray[i].charCodeAt);
+          UTFoutput.push(inputArray[i].charCodeAt());
         }
       }
       //push character to output string
@@ -109,8 +122,8 @@ const substitutionModule = (function () {
 //  "zyxwvutsrqponmlkjihgfedcba",
 //);
 let test = substitutionModule.substitution(
-  "pvrgs",
-  "~!@#$%^&*()_-+=[{]}|:<>?,.",
+  "Pvrgs, Vwdziw, Uizarvi.",
+  "zyxwvutsrqponmlkjihgfedcba", false
 );
 
 console.log(test);

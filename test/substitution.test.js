@@ -15,7 +15,7 @@ describe("substitution", () =>{
         expect(actual).to.equal("SVOOL")
     })
     it("should accept special characters in subsitution alphabet", () => {
-        const actual = substitution("hello","1973468250._*-+)(*&^%$#@!~")
+        const actual = substitution("hello","1973468250._*-+)(|&^%$#@!~")
         expect(actual).to.equal("24__+")
     })
     it("should return false if there are any duplicate characters in substitution alphabet", () =>{
