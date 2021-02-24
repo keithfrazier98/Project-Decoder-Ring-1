@@ -28,19 +28,18 @@ const caesarModule = (function () {
     inputArray.forEach((char) => {
       let charCode = char.charCodeAt();
       if (UTFChars.includes(charCode)) {
-       encode ? charCode += shift : charCode-= shift
+        encode ? (charCode += shift) : (charCode -= shift);
         //if charCode is greater than 122 or less than 97, loop around range of numbers
-        if (charCode > 122 || charCode < 97) 
-          charCode = wrapAlphabet(charCode);
+        if (charCode > 122 || charCode < 97) charCode = wrapAlphabet(charCode);
         output.push(String.fromCharCode(charCode));
       } else {
         output.push(char);
       }
     });
     output = output.join("");
-    return output
+    return output;
   }
-  
+
   return {
     caesar,
   };

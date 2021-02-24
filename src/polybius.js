@@ -30,14 +30,14 @@ const polybiusModule = (function () {
          or the number before or after char is greater than 6 */
         if (
           (!numbers.includes(inputArray[index - 1]) &&
-          !numbers.includes(inputArray[index + 1])) ||
-          ((inputArray[index - 1]) > 6 ||
-          (inputArray[index + 1]) > 6)
+            !numbers.includes(inputArray[index + 1])) ||
+          inputArray[index - 1] > 6 ||
+          inputArray[index + 1] > 6
         ) {
           //consider the char a special character
           specialChars[index + indexPush] = char;
         } else {
-            //consider the char to be apart of an encoded number pair
+          //consider the char to be apart of an encoded number pair
           inputArrayNumbers.push(char);
           //indexPush is decremented by .5 since each number in a numberpair counts for half of an encoded number
           //indexPush keeps spaces and special characters in proper location

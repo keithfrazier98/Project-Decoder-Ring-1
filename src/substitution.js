@@ -19,9 +19,9 @@ const substitutionModule = (function () {
             throw "Two or more characters are the same. Please revise alphabet.";
         });
       });
-    } catch(error) {
-      console.log(error)
-      return false
+    } catch (error) {
+      console.log(error);
+      return false;
     }
 
     if (inputAlphabetArray.includes(" ")) return false;
@@ -44,7 +44,7 @@ const substitutionModule = (function () {
       for (let i = 0; i < str.length; i++) {
         if (stdUpCaseUTFNumer.includes(str[i].charCodeAt())) {
           upCaseIndexes.push(i);
-        } 
+        }
       }
     };
 
