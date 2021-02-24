@@ -55,8 +55,7 @@ const substitutionModule = (function () {
         )
         return charIndex
       }
-
-
+      
       if (encode) {
         if (stdUTFAlphabetNums.includes(inputArray[i].charCodeAt())) {
           //identify index of UTF number in regular alphabet

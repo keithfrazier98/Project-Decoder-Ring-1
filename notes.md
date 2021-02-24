@@ -45,7 +45,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 # Unused Code 
 
 ### from substitution.js
-from line 39
+Create UPcase alphabet in UTF (from line 39)
 
 ```
 //create standard alphabet in UTF numbers (uppercase)
