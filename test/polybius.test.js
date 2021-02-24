@@ -14,7 +14,7 @@ describe("polybius", () => {
     const actual = polybius("ij");
     expect(actual).to.equal("4242");
   });
-  it("should decode I and J to (i/j)", () => {
+  it("should decode 42 to (i/j)", () => {
     const actual = polybius("42", false);
     expect(actual).to.equal("(i/j)");
   });

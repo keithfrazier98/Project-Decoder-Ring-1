@@ -21,4 +21,17 @@ describe("caeser", () => {
     const actual = caeser("message", true);
     expect(actual).to.be.false;
   });
+  it("should return false if input is missing", () =>{
+    const actual = caeser("", 4)
+    expect(actual).to.be.false
+  })
+  it("should encode a message with shift value", () =>{
+    const actual = caeser("A message!", 5)
+    expect(actual).to.equal("f rjxxflj!")
+  })
+  it("should wrap alphabet if shift extends past a or z", () =>{
+    const actual = caeser("A message!", 25)
+    expect(actual).to.equal("z ldrrzfd!")
+  })
+
 });

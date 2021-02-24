@@ -11,12 +11,8 @@ describe("substitution", () => {
       "**A __peculiar >>message!!",
       "zyxwvutsrqponmlkjihgfedcba"
     );
-    expect(actual).to.equal("**Z __kvxforzi >>nvhhztv!!");
-  });
-  it("should maintain capital letters", () => {
-    const actual = substitution("HELLO", "zyxwvutsrqponmlkjihgfedcba");
-    expect(actual).to.equal("SVOOL");
-  });
+    expect(actual).to.equal("**z __kvxforzi >>nvhhztv!!");
+  })
   it("should accept special characters in subsitution alphabet", () => {
     const actual = substitution("hello", "1973468250._*-+)(|&^%$#@!~");
     expect(actual).to.equal("24__+");

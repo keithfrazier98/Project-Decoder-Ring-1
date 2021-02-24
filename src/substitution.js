@@ -7,12 +7,15 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
   function substitution(input, alphabet, encode = true) {
-    if (!alphabet || alphabet.length != 26) return false;
-
     //convert inputed alphabet to UTF numbers
+
     const inputAlphabetArray = alphabet.split("");
 
+
     try {
+      if (alphabet.length < 26 || !alphabet) {
+        throw "Oops! Your input alphabet is less than 26 characters or missing. ";
+      }
       inputAlphabetArray.forEach((char, i) => {
         inputAlphabetArray.forEach((char2, index) => {
           if (char === char2 && index != i)
@@ -24,6 +27,8 @@ const substitutionModule = (function () {
       return false;
     }
 
+    
+
     if (inputAlphabetArray.includes(" ")) return false;
     const inputUTFCharArray = [];
     inputAlphabetArray.forEach((char) => {
@@ -34,21 +39,6 @@ const substitutionModule = (function () {
     const standardAlphabetChars = [...Array(27).keys()];
     const stdUTFAlphabetNums = standardAlphabetChars.map((num) => num + 97);
 
-    //create standard alphabet in UTF numbers (uppercase)
-    const stdUpCaseAlphabet = [...Array(27).keys()];
-    const stdUpCaseUTFNumer = stdUpCaseAlphabet.map((num) => num + 65);
-
-    //convert input to UTF numbers
-    upCaseIndexes = [];
-    const saveUpperCaseIndex = (str) => {
-      for (let i = 0; i < str.length; i++) {
-        if (stdUpCaseUTFNumer.includes(str[i].charCodeAt())) {
-          upCaseIndexes.push(i);
-        }
-      }
-    };
-
-    saveUpperCaseIndex(input);
     const lowerCaseInput = input.toLowerCase();
     const inputArray = lowerCaseInput.split("");
 
@@ -100,13 +90,7 @@ const substitutionModule = (function () {
     }
 
     UTFoutput.forEach((UTFNum) => {
-      if (output.length != upCaseIndexes[0]) {
-        output += String.fromCharCode(UTFNum);
-      } else {
-        let upCaseLett = String.fromCharCode(UTFNum).toUpperCase();
-        output += upCaseLett;
-        upCaseIndexes.shift();
-      }
+      output += String.fromCharCode(UTFNum);
     });
 
     return output;

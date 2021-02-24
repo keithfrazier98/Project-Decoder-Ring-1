@@ -16,7 +16,21 @@ const caesarModule = (function () {
   }
 
   function caesar(input, shift, encode = true) {
-    if (!shift || shift === true || shift > 25 || shift < -26) return false;
+    try {
+      if (!input) {
+        throw "Oops! No input was provided.";
+      }
+
+      if (!shift) {
+        throw "Oops! No shift amount was provided.";
+      }
+      if (shift === true || shift > 25 || shift < -25) {
+        throw "Oops! Shift amount cannot be greater than 25 or less than -25.";
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
 
     input = input.toLowerCase();
     const inputArray = input.split("");
