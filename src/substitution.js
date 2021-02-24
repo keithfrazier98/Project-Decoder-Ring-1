@@ -11,7 +11,6 @@ const substitutionModule = (function () {
 
     const inputAlphabetArray = alphabet.split("");
 
-
     try {
       if (alphabet.length < 26 || !alphabet) {
         throw "Oops! Your input alphabet is less than 26 characters or missing. ";
@@ -26,8 +25,6 @@ const substitutionModule = (function () {
       console.log(error);
       return false;
     }
-
-    
 
     if (inputAlphabetArray.includes(" ")) return false;
     const inputUTFCharArray = [];
@@ -46,38 +43,34 @@ const substitutionModule = (function () {
     const UTFoutput = [];
     let output = "";
 
+    
+
     //if encode, ignore spaces and special characters, otherwise convert against alphabet
-    if (encode) {
-      for (let i = 0; i < inputArray.length; i++) {
+    for (let i = 0; i < inputArray.length; i++) {
+      const currLett = inputArray[i];
+      const currLettUTF = currLett.charCodeAt();
+      const findIndex = (UTFalphabet) => {
+        const charIndex = UTFalphabet.findIndex(
+          (num) => num === currLettUTF
+        )
+        return charIndex
+      }
+
+
+      if (encode) {
         if (stdUTFAlphabetNums.includes(inputArray[i].charCodeAt())) {
-          //identify letter
-          const currLett = inputArray[i];
-          //identify UTF number of letter at current index
-          const currLettUTF = currLett.charCodeAt();
           //identify index of UTF number in regular alphabet
-          const stdIndex = stdUTFAlphabetNums.findIndex(
-            (num) => num === currLettUTF
-          );
+          const stdIndex = findIndex(stdUTFAlphabetNums)
           //identify UTF number at stdIndex in input alphabet and push to UTFoutput
           UTFoutput.push(inputUTFCharArray[stdIndex]);
         } else {
           //else if special letter, push to UTFoutput
           UTFoutput.push(inputArray[i].charCodeAt());
         }
-      }
-    } else {
-      //decode
-      //loop through input message array
-      for (let i = 0; i < inputArray.length; i++) {
-        //identify UTF number of current character
-        const currLett = inputArray[i];
-        const currLettUTF = currLett.charCodeAt();
-        //if UTF number is in the input alphabet
+      } /*decode*/ else {
         if (inputUTFCharArray.includes(currLettUTF)) {
           //find index of current character
-          const inpIndex = inputUTFCharArray.findIndex(
-            (num) => num === currLettUTF
-          );
+          const inpIndex = findIndex(inputUTFCharArray)
           //find character of regular alphabet at index
           UTFoutput.push(stdUTFAlphabetNums[inpIndex]);
         } else {
@@ -86,9 +79,7 @@ const substitutionModule = (function () {
           UTFoutput.push(inputArray[i].charCodeAt());
         }
       }
-      //push character to output string
     }
-
     UTFoutput.forEach((UTFNum) => {
       output += String.fromCharCode(UTFNum);
     });
