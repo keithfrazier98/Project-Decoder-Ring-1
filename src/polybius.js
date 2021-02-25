@@ -7,7 +7,7 @@
 
 /*This functionality isn't 100% fool proof. 
 If a string of numbers is given to the function that has 
-multiple numbers smaller than 5 even though they are apart
+multiple numbers smaller than 5 ,even though they are apart
 of a very large number, those numbers will be decoded. 
 I think though that this is acceptable as far as the 
 expectations for this project go.*/
