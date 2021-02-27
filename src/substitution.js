@@ -9,24 +9,35 @@ const substitutionModule = (function () {
   function substitution(input, alphabet, encode = true) {
     //convert inputed alphabet to UTF numbers
 
+    try{
+      if (!alphabet || alphabet === true || alphabet.length < 26 ) {
+        throw "Oops! Your input alphabet is less than 26 characters or missing. ";
+      }
+    } catch (error) {
+      console.log(error);
+      return false
+    }
+
+
     const inputAlphabetArray = alphabet.split("");
 
     try {
-      if (alphabet.length < 26 || !alphabet) {
-        throw "Oops! Your input alphabet is less than 26 characters or missing. ";
-      }
       inputAlphabetArray.forEach((char, i) => {
         inputAlphabetArray.forEach((char2, index) => {
           if (char === char2 && index != i)
             throw "Two or more characters are the same. Please revise alphabet.";
         });
+
+      if (inputAlphabetArray.includes(" ")) {
+        throw "Please remove spaces from sub alphabet."
+      };
       });
     } catch (error) {
       console.log(error);
       return false;
     }
 
-    if (inputAlphabetArray.includes(" ")) return false;
+    //create UTF character array of input
     const inputUTFCharArray = [];
     inputAlphabetArray.forEach((char) => {
       inputUTFCharArray.push(char.charCodeAt());
@@ -57,14 +68,16 @@ const substitutionModule = (function () {
       }
       
       if (encode) {
-        if (stdUTFAlphabetNums.includes(inputArray[i].charCodeAt())) {
+        if (stdUTFAlphabetNums.includes(currLettUTF)) {
           //identify index of UTF number in regular alphabet
           const stdIndex = findIndex(stdUTFAlphabetNums)
           //identify UTF number at stdIndex in input alphabet and push to UTFoutput
           UTFoutput.push(inputUTFCharArray[stdIndex]);
         } else {
+          //if special characters are in the sub alphabet, ignore special characters
+          if (!inputUTFCharArray.includes(currLettUTF) || currLettUTF === "32") 
           //else if special letter, push to UTFoutput
-          UTFoutput.push(inputArray[i].charCodeAt());
+          UTFoutput.push(currLettUTF);
         }
       } /*decode*/ else {
         if (inputUTFCharArray.includes(currLettUTF)) {
@@ -75,7 +88,7 @@ const substitutionModule = (function () {
         } else {
           //if character at current index is not in input alphabet
           //push character to output string
-          UTFoutput.push(inputArray[i].charCodeAt());
+          UTFoutput.push(currLettUTF);
         }
       }
     }
@@ -90,5 +103,10 @@ const substitutionModule = (function () {
     substitution,
   };
 })();
+
+substitutionModule.substitution(
+  "**A __peculiar >>message!!",
+  "zyxwvutsrqponmlkjihgfedcba"
+);
 
 module.exports = substitutionModule.substitution;

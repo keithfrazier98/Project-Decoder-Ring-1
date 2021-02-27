@@ -16,7 +16,6 @@ const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input, encode = true) {
-    //remove special characters and spaces from input
     const numbers = ["1", "2", "3", "4", "5"];
 
     let inputArray = input.split("");
